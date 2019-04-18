@@ -10,7 +10,20 @@
 
 5. # config/routes.rb
 
+    ```ruby
     Rails.application.routes.draw do
-        resources :books, :only => :index
+        resources :books, only: [:index]
         root 'books#index'
     end
+    ```
+
+6. # app/controllers/books_controller.rb
+    ```ruby
+    class BooksController < ApplicationController
+        def index
+            @books = Book.all.order(:last_sales_rank)
+        end
+    end
+    ```
+
+7.
